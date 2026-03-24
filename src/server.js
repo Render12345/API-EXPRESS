@@ -16,4 +16,8 @@ app.use((req, res) => res.status(404).json({ exito: false, mensaje: `Ruta "${req
 encontrada` }));
 // Error handler (siempre al final)
 app.use(errorHandler);
-app.listen(PORT, () => console.log(`Servidor en http://localhost:${PORT}`));
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => console.log(`Servidor en http://localhost:${PORT}`));
+}
+
+module.exports = app;
